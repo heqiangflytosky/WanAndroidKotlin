@@ -5,13 +5,13 @@ import androidx.room.Query
 import androidx.room.Transaction
 
 @Dao
-public interface HomeDao : BaseDao<ContentItem>{
+public interface HomeDao : BaseDao<DBHomeContentItem>{
     @Query("select * from home")
-    public fun getAllData(): List<ContentItem>
+    public fun getAllData(): List<DBHomeContentItem>
 
     @Transaction
     @Query("select * from home where page =:currentPage")
-    public fun getPageData(currentPage:Int): List<ContentItem>?
+    public fun getPageData(currentPage:Int): List<DBHomeContentItem>?
 
     @Query("delete from home")
     fun deleteAll()
@@ -21,7 +21,7 @@ public interface HomeDao : BaseDao<ContentItem>{
     fun recordDeletion()
 
     @Transaction
-    fun insertAll(objects: List<ContentItem>) = objects.forEach {
+    fun insertAll(objects: List<DBHomeContentItem>) = objects.forEach {
         insert(it)
     }
 }

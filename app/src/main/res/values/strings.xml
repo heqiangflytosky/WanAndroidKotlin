@@ -5,6 +5,22 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
-    <string name="text_unknown">Unknown</string>
     <string name="text_anonymous">Anonymous</string>
+    <string name="text_years_ago">years ago</string>
+    <string name="text_months_ago">months_ago</string>
+    <string name="text_days_ago">days ago</string>
+    <string name="text_hours_ago">hours ago</string>
+    <string name="text_minutes_ago">minutes ago</string>
+    <string name="text_seconds_ago">seconds ago</string>
+    <string name="text_unknown">Unknown</string>
+    <string name="text_update">Already up to date</string>
+    <string name="text_presenter">Presenter:</string>
+    <string name="share_page">「%1$s」:%2$1s (shared from @%3$s App) </string>
+    <string name="text_share">Share</string>
+    <string name="text_my_collection">My Collection</string>
+    <string name="text_my_read_history">My Read History</string>
+    <string name="text_about_author">About author</string>
+    <string name="text_read_pages">%1$d pages</string>
+    <string name="text_search">Search</string>
+    <string name="text_submit">Submit</string>
 </resources>

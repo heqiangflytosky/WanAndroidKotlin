@@ -7,9 +7,11 @@ import java.util.ArrayList
 @OpenDataClass
 data class ArticleItemBean (
     var id:Int?,
-    var adminAdd: Boolean?,
-    var apkLink: String?,
-    var link:String?
+    var author: String?,
+    var shareUser: String?,
+    var publishTime: Long?,
+    var link:String?,
+    var title:String?
 )
 
 data class HomeDataBean (

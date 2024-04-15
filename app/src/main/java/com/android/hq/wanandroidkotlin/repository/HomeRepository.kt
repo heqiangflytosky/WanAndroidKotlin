@@ -1,14 +1,10 @@
 package com.android.hq.wanandroidkotlin.repository
 
 import android.util.Log
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import com.android.hq.wanandroidkotlin.bean.BaseResponse
 import com.android.hq.wanandroidkotlin.bean.HomeDataBean
 import com.android.hq.wanandroidkotlin.data.HomeLocalDataSource
-import com.android.hq.wanandroidkotlin.data.HomeNetworkDataSource
 import com.android.hq.wanandroidkotlin.data.HomeRemoteDataSource
-import com.android.hq.wanandroidkotlin.database.ContentItem
+import com.android.hq.wanandroidkotlin.database.DBHomeContentItem
 import com.android.hq.wanandroidkotlin.network.NoNetWorkException
 
 class HomeRepository (private val homeRemoteDataSource: HomeRemoteDataSource, private val homeLocalDataSource: HomeLocalDataSource){
@@ -18,9 +14,12 @@ class HomeRepository (private val homeRemoteDataSource: HomeRemoteDataSource, pr
         try {
             reponse = homeRemoteDataSource.getHomeData(page)
             if (reponse != null) {
-                var listContent = arrayListOf<ContentItem>()
+                var listContent = arrayListOf<DBHomeContentItem>()
                 reponse.datas.forEach { it ->
-                    listContent.add(ContentItem(it.id,it.link,page))
+                    if(it.author.isNullOrEmpty()) {
+                        it.author = it.shareUser
+                    }
+                    listContent.add(DBHomeContentItem(it.id,it.title,it.author,it.publishTime,it.link,page))
                 }
                 Log.e("TestDB",""+listContent)
                 homeLocalDataSource.addDatas(listContent)

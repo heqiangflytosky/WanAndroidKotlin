@@ -8,6 +8,7 @@ import com.android.hq.wanandroidkotlin.R
 import com.android.hq.wanandroidkotlin.bean.ArticleItemBean
 import com.android.hq.wanandroidkotlin.bean.ContentItem
 import com.android.hq.wanandroidkotlin.bean.Item
+import com.android.hq.wanandroidkotlin.utils.AppUtils
 
 class ListAdapter2:RecyclerView.Adapter<RecyclerView.ViewHolder> {
     val TYPE_INVALID = -1
@@ -32,10 +33,12 @@ class ListAdapter2:RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ContentViewHolder) {
-            holder.title?.text = "item.title"
+            var item = list?.get(position) as ContentItem
+            holder.title?.text = item.title
             holder.des?.text = "item.desc"
-            holder.from?.text = "item.author"
-            holder.time?.text = "TTTTT"
+            holder.from?.text = item.author
+            holder.time?.text = item.publishTime
+                ?.let { AppUtils.convertTimestamp(it) }
         }
     }
 

@@ -56,59 +56,67 @@ object AppUtils {
         }
     }
 
-//    fun formatPublishedTime(time: String): String? {
-//        var c: Calendar? = null
-//        try {
-//            if (time.endsWith("Z")) {
-//                sDataFormatZ.parse(time)
-//                c = sDataFormatZ.getCalendar()
-//            } else if (time.endsWith("SSSSSS")) {
-//                sDataFormat6S.parse(time)
-//                c = sDataFormat6S.getCalendar()
-//            } else {
-//                sDataFormat.parse(time)
-//                c = sDataFormat.getCalendar()
-//            }
-//        } catch (e: ParseException) {
-//            e.printStackTrace()
-//            return null
-//        }
-//
-//        if (c != null) {
-//            val year = c!!.get(Calendar.YEAR)
-//            val month = c.get(Calendar.MONTH) + 1
-//            val day = c.get(Calendar.DAY_OF_MONTH)
-//            val hour = c.get(Calendar.HOUR_OF_DAY)
-//            val minute = c.get(Calendar.MINUTE)
-//            val second = c.get(Calendar.SECOND)
-//
-//            //获取当前时间
-//            //            Date date = new Date();
-//            //            sDataFormat.format(date);
-//            c.timeInMillis = System.currentTimeMillis()
-//            val cur_year = c.get(Calendar.YEAR)
-//            val cur_month = c.get(Calendar.MONTH) + 1
-//            val cur_day = c.get(Calendar.DAY_OF_MONTH)
-//            val cur_hour = c.get(Calendar.HOUR_OF_DAY)
-//            val cur_minute = c.get(Calendar.MINUTE)
-//            val cur_second = c.get(Calendar.SECOND)
-//
-//            if (year < cur_year) {
-//                return (cur_year - year).toString() + mAppContext?.resources?.getString(R.string.text_years_ago)
-//            } else if (month < cur_month) {
-//                return (cur_month - month).toString() + mAppContext?.resources?.getString(R.string.text_months_ago)
-//            } else if (day < cur_day) {
-//                return (cur_day - day).toString() + mAppContext?.resources?.getString(R.string.text_days_ago)
-//            } else if (hour < cur_hour) {
-//                return (cur_hour - hour).toString() + mAppContext?.resources?.getString(R.string.text_hours_ago)
-//            } else if (minute < cur_minute) {
-//                return (cur_minute - minute).toString() + mAppContext?.resources?.getString(R.string.text_minutes_ago)
-//            } else if (second < cur_second) {
-//                return (cur_second - second).toString() + mAppContext?.resources?.getString(R.string.text_seconds_ago)
-//            }
-//        }
-//        return null
-//    }
+    fun convertTimestamp(timestampMilli: Long): String {
+        // 创建一个SimpleDateFormat对象，指定目标日期格式
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        // 创建一个Date对象，将时间戳转换为毫秒级别
+        val date = Date(timestampMilli)
+        // 使用SimpleDateFormat对象格式化Date对象为字符串
+        return sdf.format(date)
+    }
+    fun formatPublishedTime(time: String): String? {
+        var c: Calendar? = null
+        try {
+            if (time.endsWith("Z")) {
+                sDataFormatZ.parse(time)
+                c = sDataFormatZ.getCalendar()
+            } else if (time.endsWith("SSSSSS")) {
+                sDataFormat6S.parse(time)
+                c = sDataFormat6S.getCalendar()
+            } else {
+                sDataFormat.parse(time)
+                c = sDataFormat.getCalendar()
+            }
+        } catch (e: ParseException) {
+            e.printStackTrace()
+            return null
+        }
+
+        if (c != null) {
+            val year = c!!.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH) + 1
+            val day = c.get(Calendar.DAY_OF_MONTH)
+            val hour = c.get(Calendar.HOUR_OF_DAY)
+            val minute = c.get(Calendar.MINUTE)
+            val second = c.get(Calendar.SECOND)
+
+            //获取当前时间
+            //            Date date = new Date();
+            //            sDataFormat.format(date);
+            c.timeInMillis = System.currentTimeMillis()
+            val cur_year = c.get(Calendar.YEAR)
+            val cur_month = c.get(Calendar.MONTH) + 1
+            val cur_day = c.get(Calendar.DAY_OF_MONTH)
+            val cur_hour = c.get(Calendar.HOUR_OF_DAY)
+            val cur_minute = c.get(Calendar.MINUTE)
+            val cur_second = c.get(Calendar.SECOND)
+
+            if (year < cur_year) {
+                return (cur_year - year).toString() + mAppContext?.resources?.getString(R.string.text_years_ago)
+            } else if (month < cur_month) {
+                return (cur_month - month).toString() + mAppContext?.resources?.getString(R.string.text_months_ago)
+            } else if (day < cur_day) {
+                return (cur_day - day).toString() + mAppContext?.resources?.getString(R.string.text_days_ago)
+            } else if (hour < cur_hour) {
+                return (cur_hour - hour).toString() + mAppContext?.resources?.getString(R.string.text_hours_ago)
+            } else if (minute < cur_minute) {
+                return (cur_minute - minute).toString() + mAppContext?.resources?.getString(R.string.text_minutes_ago)
+            } else if (second < cur_second) {
+                return (cur_second - second).toString() + mAppContext?.resources?.getString(R.string.text_seconds_ago)
+            }
+        }
+        return null
+    }
 
 //    fun setTextViewLeftDrawableForHeader(textView: TextView, icon: IIcon) {
 //        val drawable = IconicsDrawable(mAppContext)

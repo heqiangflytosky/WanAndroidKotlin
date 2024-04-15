@@ -5,7 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.android.hq.wanandroidkotlin.utils.AppUtils
 
-@Database(entities = [ContentItem::class ], version = 1, exportSchema = false)
+@Database(entities = [DBHomeContentItem::class ], version = 1, exportSchema = false)
 public abstract class AppDataBase : RoomDatabase(){
     abstract fun homeDao():HomeDao
 

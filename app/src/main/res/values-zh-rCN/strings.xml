@@ -5,6 +5,22 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
-    <string name="text_unknown">Unknown</string>
-    <string name="text_anonymous">Anonymous</string>
+    <string name="text_anonymous">匿名</string>
+    <string name="text_years_ago">年前</string>
+    <string name="text_months_ago">个月前</string>
+    <string name="text_days_ago">天前</string>
+    <string name="text_hours_ago">小时前</string>
+    <string name="text_minutes_ago">分钟前</string>
+    <string name="text_seconds_ago">秒前</string>
+    <string name="text_unknown">未知</string>
+    <string name="text_update">已经是最新</string>
+    <string name="text_presenter">推荐者：</string>
+    <string name="share_page">「%1$s」：%2$1s (来自 @%3$sApp) </string>
+    <string name="text_share">分享</string>
+    <string name="text_my_collection">我的收藏</string>
+    <string name="text_my_read_history">阅读过的文章</string>
+    <string name="text_about_author">关于我们</string>
+    <string name="text_read_pages">%1$d篇</string>
+    <string name="text_search">搜索</string>
+    <string name="text_submit">提交</string>
 </resources>

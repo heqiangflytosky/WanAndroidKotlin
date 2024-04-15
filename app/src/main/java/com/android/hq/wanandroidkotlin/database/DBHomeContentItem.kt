@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "home")
-class ContentItem{
+class DBHomeContentItem{
     //主键，自增
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")
@@ -15,12 +15,21 @@ class ContentItem{
     var id:Int?
     @ColumnInfo(name = "title")
     var title: String?
+    @ColumnInfo(name = "author")
+    var author: String?
+    @ColumnInfo(name = "publishTime")
+    var publishTime: Long?
+    @ColumnInfo(name = "link")
+    var link: String?
     @ColumnInfo(name = "page")
     var page:Int
 
-    constructor(id:Int?,title: String?,page:Int) {
+    constructor(id:Int?,title: String?,author: String?,publishTime: Long?,link: String?,page:Int) {
         this.id = id
         this.title = title
+        this.author = author
+        this.publishTime = publishTime
+        this.link = link
         this.page = page
     }
 }
