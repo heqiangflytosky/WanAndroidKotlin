@@ -1,0 +1,31 @@
+package com.android.hq.wanandroidkotlin.network
+
+import java.io.IOException
+
+class APIException : Exception {
+    var errCode: Int?
+    var errMsg: String?
+
+    constructor(error: ERROR, e: Throwable? = null) : super(e) {
+        errCode = error.code
+        errMsg = error.errMsg
+    }
+
+    constructor(code: Int?, msg: String?, e: Throwable? = null) : super(e) {
+        this.errCode = code
+        this.errMsg = msg
+    }
+}
+
+/**
+ * 无网络连接异常
+ */
+class NoNetWorkException : IOException {
+    var errCode: Int
+    var errMsg: String
+
+    constructor(error: ERROR, e: Throwable? = null) : super(e) {
+        errCode = error.code
+        errMsg = error.errMsg
+    }
+}
