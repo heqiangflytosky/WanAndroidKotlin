@@ -3,7 +3,10 @@
 
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_mine">Mine</string>
+
+    <string name="tab_recommend">Recommend</string>
+    <string name="tab_categorize">Categorize</string>
 
     <string name="text_anonymous">Anonymous</string>
     <string name="text_years_ago">years ago</string>

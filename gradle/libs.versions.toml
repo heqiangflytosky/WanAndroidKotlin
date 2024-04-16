@@ -16,7 +16,6 @@ retrofit-log="3.9.0"
 lifecycle-viewmode="2.3.1"
 navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
-googleMaterial = "1.2.0-alpha01"
 swiperefreshlayout = "1.2.0-alpha01"
 paging = "3.2.1"
 room = "2.6.1"
@@ -38,7 +37,6 @@ retrofit-log = { group = "com.squareup.okhttp3", name = "logging-interceptor", v
 lifecycle-viewmode = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmode" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
-google-material = { group = "com.google.android.material", name = "material", version.ref = "googleMaterial" }
 androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 androidx-paging = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }

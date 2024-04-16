@@ -8,11 +8,16 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.android.hq.wanandroidkotlin.R
 import com.android.hq.wanandroidkotlin.bean.HomeDataBean
 import com.android.hq.wanandroidkotlin.databinding.FragmentHomeBinding
+import com.android.hq.wanandroidkotlin.ui.adapter.FgPagerAdapter
 import com.android.hq.wanandroidkotlin.viewmodel.HomeViewModel
 import com.android.hq.wanandroidkotlin.viewmodel.HomeViewModel2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.catch
@@ -28,6 +33,12 @@ class HomeFragment : Fragment() {
     private var homeViewModel : HomeViewModel? = null
     private var homeViewModel2 : HomeViewModel2? = null
 
+    private lateinit var viewPager: ViewPager2
+    private lateinit var  tabLayout : TabLayout
+    private lateinit var pagerAdapter : FgPagerAdapter
+    private lateinit var mediator: TabLayoutMediator
+
+    private var tabArray = arrayOf(R.string.tab_recommend,R.string.tab_categorize)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,9 +57,28 @@ class HomeFragment : Fragment() {
 //        homeViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
 //        }
-        root.findViewById<Button>(R.id.test).setOnClickListener {
-            testClick1(it)
-        }
+
+        viewPager = root.findViewById(R.id.view_pager)
+        tabLayout = root.findViewById(R.id.tabs)
+        pagerAdapter = FgPagerAdapter(requireActivity())
+
+        viewPager?.adapter = pagerAdapter
+        viewPager?.offscreenPageLimit = 1
+
+        mediator = TabLayoutMediator(
+            /* tabLayout = */ tabLayout,/* viewPager = */
+            viewPager, /* tabConfigurationStrategy = */
+            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+                Log.e("Test","TabConfigurationStrategy")
+                tab.text = resources.getText(tabArray[position])
+            }
+        )
+        mediator.attach()
+
+        addPages()
+        //addTabs()
+
+
         return root
     }
 
@@ -57,25 +87,31 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    fun testClick1(view: View) {
-//        GlobalScope.launch {
-//            homeViewModel?.getHomeData(0, onSuccess = { reponse: HomeDataBean? ->
-//
-//            })?.catch {
-//                Log.e("Test11",it.toString())
-//            }?.flowOn(Dispatchers.IO)?.collect { reponse ->
-//                Log.e("Test11", reponse.toString())
-//            }
-//        }
+    fun addPages() {
+        //pagerAdapter?.addPage(GankDailyFragment())
+        Log.e("Test","addPages ")
+        pagerAdapter?.addPage(ReCommendFragment())
 
-        GlobalScope.launch {
-            homeViewModel2?.getHomeData(1, onSuccess = { reponse: HomeDataBean? ->
+        pagerAdapter?.addPage(ReCommendFragment())
 
-            })?.catch {
-                Log.e("Test11",it.toString())
-            }?.flowOn(Dispatchers.IO)?.collect { reponse ->
-                Log.e("Test11", reponse.toString())
-            }
-        }
+
+
+    }
+
+    fun addTabs() {
+        Log.e("Test","addTabs "+Log.getStackTraceString(Throwable()))
+        //addTab(R.string.tab_daily_recommend, 0, true)
+        addTab(R.string.tab_recommend, 0, true)
+        addTab(R.string.tab_categorize, 1, false)
+
+        viewPager?.currentItem = 0
+    }
+
+    fun addTab(textId:Int, position: Int, selected: Boolean) {
+        var tab = tabLayout?.newTab()
+        tab?.text = resources.getText(textId)
+        Log.e("Test","addTab "+tabLayout.tabCount)
+        tabLayout?.addTab(tab!!, position, selected)
+
     }
 }

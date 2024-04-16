@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.android.hq.wanandroidkotlin.ui.fragment.HomeFragment3"
+        android:name="com.android.hq.wanandroidkotlin.ui.fragment.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.android.hq.wanandroidkotlin.ui.fragment.HomeFragment"
+        android:name="com.android.hq.wanandroidkotlin.ui.fragment.ReCommendFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.android.hq.wanandroidkotlin.ui.fragment.HomeFragment"
-        android:label="@string/title_notifications"
+        android:id="@+id/navigation_mine"
+        android:name="com.android.hq.wanandroidkotlin.ui.fragment.HomeFragment3"
+        android:label="@string/title_mine"
         tools:layout="@layout/fragment_home" />
 </navigation>

@@ -8,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.android.hq.wanandroidkotlin.databinding.ActivityMainBinding
+import com.android.hq.wanandroidkotlin.ui.adapter.FgPagerAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_mine
             )
         )
         // 去掉顶部标题栏
@@ -41,5 +42,6 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         //navView.setOnItemSelectedListener { if () }
+
     }
 }
